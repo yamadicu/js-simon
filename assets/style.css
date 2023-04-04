@@ -4,4 +4,8 @@
     border: 1px solid black;
     aspect-ratio: 1;
     align-items: center;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
 }

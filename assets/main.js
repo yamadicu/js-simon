@@ -21,14 +21,28 @@ function game() {
     let arrayBotCompleto = numBot();
     console.log(arrayBotCompleto)
 
-    let carte = document.createElement('div')
-    carte.classList.add('carta')
-    container.append(carte)
+    for (let i = 0; i < arrayBotCompleto.length; i++) {
+        
+        let carte = document.createElement('div')
+        carte.classList.add('carta')
+        container.append(carte)
+        carte.innerText = arrayBotCompleto[i];
+        
+    }
 
     setTimeout( function() {
 
         //allo scadere dei 3 secondi la classe container che contiene i numeri casuali stampati scompare a causa del display none
         container.classList.add('d-none')
+
+        let arrayGamer = []
+        let risposta
+
+        for(let k = 0; k < arrayBotCompleto.length; k++){
+            risposta = parseInt(prompt('inserisci i numeri'))
+            arrayGamer.push(risposta)
+        }
+        console.log(arrayGamer);
 
 
     },3*1000)
