@@ -8,6 +8,7 @@
 
 //richiamo la classe dall' HTML
 let container = document.querySelector('.container')
+let risp = document.querySelector('risposta')
 
 //la funzione parte al click di start
 start.addEventListener('click', function (){
@@ -32,20 +33,33 @@ function game() {
 
     setTimeout( function() {
 
-        //allo scadere dei 3 secondi la classe container che contiene i numeri casuali stampati scompare a causa del display none
+        //allo scadere dei 3 secondi la classe carte che contiene i numeri casuali stampati scompare a causa del display none
         container.classList.add('d-none')
+    },3*1000)
+
+    setTimeout(function() {
 
         let arrayGamer = []
-        let risposta
 
-        for(let k = 0; k < arrayBotCompleto.length; k++){
-            risposta = parseInt(prompt('inserisci i numeri'))
-            arrayGamer.push(risposta)
+        while( arrayGamer.length < 5){
+            let numUtente = parseInt(prompt('inserisci un numero'))
+            if ( !arrayGamer.includes(numUtente)) {
+                arrayGamer.push(numUtente)
+            }
         }
-        console.log(arrayGamer);
 
+        let indovinati =[]
 
-    },3*1000)
+        for( let x = 0; x < arrayGamer.length; x++){
+            if(arrayBotCompleto.includes( arrayGamer[x])){
+                indovinati.push(arrayGamer[x])
+            }
+        }
+
+        //stampa del risultato
+        document.getElementById('risposta').innerHTML = `hai indovinato ${indovinati.length} e sono: ${indovinati}`
+
+    }, 3500)
 }
 
 //funzione dei numeri casuali
@@ -61,7 +75,7 @@ function numBot(){
     //creo il ciclo che permette di salvare i numeri nell'array
     while ( arrayBot.length < 5 ){
 
-        let num = randomNum( 1, 5 );
+        let num = randomNum( 1, 100 );
 
         if( !arrayBot.includes(num)){
 
